@@ -14,3 +14,9 @@
 
 
 
+\## Day 2
+
+\- Practiced Git branching
+
+
+
