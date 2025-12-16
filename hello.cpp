@@ -1,48 +1,29 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <map>
 using namespace std;
-
-// Read numbers from user
-vector<int> readNumbers(int n) {
-    vector<int> nums(n);
-    cout << "Enter " << n << " numbers:" << endl;
-    for (int i = 0; i < n; i++) {
-        cin >> nums[i];
-    }
-    return nums;
-}
-
-// Calculate average
-double calculateAverage(const vector<int>& nums) {
-    int sum = 0;
-    for (int x : nums) {
-        sum += x;
-    }
-    return (double)sum / nums.size();
-}
-
-// Display results
-void displayResults(const vector<int>& nums, double avg) {
-    cout << "\nSorted numbers: ";
-    for (int x : nums) {
-        cout << x << " ";
-    }
-    cout << "\nMin = " << nums.front();
-    cout << "\nMax = " << nums.back();
-    cout << "\nAverage = " << avg << endl;
-}
 
 int main() {
     int n;
     cout << "How many numbers? ";
     cin >> n;
 
-    vector<int> numbers = readNumbers(n);
-    sort(numbers.begin(), numbers.end());
+    vector<int> numbers(n);
+    cout << "Enter numbers:" << endl;
+    for (int i = 0; i < n; i++) {
+        cin >> numbers[i];
+    }
 
-    double avg = calculateAverage(numbers);
-    displayResults(numbers, avg);
+    map<int, int> freq;
+
+    for (int x : numbers) {
+        freq[x]++;
+    }
+
+    cout << "\nNumber Frequency (sorted):"<< endl;
+    for (auto pair : freq) {
+        cout << pair.first << " -> " << pair.second << endl;
+    }
 
     return 0;
 }
